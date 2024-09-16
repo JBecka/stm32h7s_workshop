@@ -1,20 +1,20 @@
 # OSPI Low voltage setup
 
-The OSPI on nucleo isrunning at 1.8V. In normal situation it will have limited speed on STM32.
-However we can enable a HSLV(high speed low voltage) feature.
+The OSPI on the NUCLEO-H7S3L8 development board is powered by 1.8V. Normally, this would limit the speed on STM32.
+However, we can enable the High Speed Low Voltage (HSLV) feature to achieve a maximum frequency of 200 MHz.
 
 Where to enable HSLV:
-- option bytes (Cube Programmer)
-- SBS periphery
+- Option Bytes (can be modified using STM32CubeProgrammer)
+- SBS (System configuration, Boot and Security) registers
 
-# HSLV - High speed low voltage
+# HSLV - High Speed Low Voltage
 
-The xSPI1/2 have independent power domains. They can from from 1.8V to 3.3V. 
-However to 2.6V they can run at 200MHz. But below the speed is reduced. 
-To solve this issue a HSLV feature can be enabled to allow the pins run max speed. 
+The xSPI1/2 have independent power domains. These domains can be powered within a range of 1.8V to 3.3V.
+However to 2.6V they can run at 200 MHz. Below this frequency the speed is reduced. 
+To solve this issue a HSLV feature can be enabled to allow the I/Os to run at max speed. 
 
 This must be done in:
-- SBS periphery
+- SBS peripheral
 - And in Option bytes
 
 Both must be applied to have HSLV functional.
